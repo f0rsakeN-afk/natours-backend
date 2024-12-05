@@ -10,6 +10,7 @@ yarn-error.log*
 
 # Environment variables
 .env
+config.env
 .env.* # If you have multiple environment files like .env.local, .env.production, etc.
 
 # Directory for test coverage reports

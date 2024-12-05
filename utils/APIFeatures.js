@@ -1,21 +1,20 @@
 class APIFeatures {
     constructor(query, queryString) {
-        this.query = query;
+        this.query = query
         this.queryString = queryString
     }
 
-
     filter() {
-        const queryObj = { ...this.queryString };
+        const queryObj = { ...this.queryStr }
         const excludeFields = ['sort', 'limit', 'page', 'fields']
         excludeFields.forEach(el => delete queryObj[el]);
-        let queryString = JSON.stringify(queryObj);
-
-        queryString = queryString.replace('/\b(gt|gte|lt|lte)\b/g', match => `$${match}`);
-
-        this.query = this.query.find(JSON.parse(queryString));
+        let queryStr = JSON.stringify(queryObj)
+        queryStr = queryStr.replace('/\b(gt|gte|lt|lte)\b/g',
+            match => `$${match}`)
+        this.query = this.query.find(JSON.parse(queryStr))
         return this;
     }
+
 
     sort() {
         if (this.queryString.sort) {
@@ -24,10 +23,11 @@ class APIFeatures {
         } else {
             this.query = this.query.sort('-createdAt')
         }
-        return this;
+        return this
     }
 
-    limitFields() {
+
+    limit() {
         if (this.queryString.fields) {
             const fields = this.queryString.fields.split(',').join(' ');
             this.query = this.query.select(fields)
@@ -36,6 +36,7 @@ class APIFeatures {
         }
         return this;
     }
+
 
     paginate() {
         const page = this.queryString.page * 1 || 1;
