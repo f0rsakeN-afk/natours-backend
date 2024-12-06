@@ -9,7 +9,7 @@ const URL = process.env.DB.replace('<db_password>', process.env.PW)
 
 
 mongoose.connect(URL).then((con) => {
-    console.log(con.connections);
+    //console.log(con.connections);
     console.log('Db connection successful')
 }).catch(err => console.log(err))
 
