@@ -67,8 +67,6 @@ exports.deleteTour = catchAsync(async (req, res, next) => {
     }
     res.status(204).json({
         status: 'success',
-        data: {
-            null
-        }
+        data: null
     })
 })
